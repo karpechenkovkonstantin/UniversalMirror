@@ -1,0 +1,4 @@
+NCES:
+  TESTDIR:
+    - https://server/file_1.crt 
+    - https://server/file_2.crt
