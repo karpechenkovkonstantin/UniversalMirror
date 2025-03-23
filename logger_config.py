@@ -19,7 +19,8 @@ def setup_logger():
     file_handler = RotatingFileHandler(
         'logs/app.log', 
         maxBytes=10*1024*1024,  # 10MB
-        backupCount=10
+        backupCount=10,
+        encoding='utf-8'
     )
     file_handler.setFormatter(formatter)
     logger.addHandler(file_handler)
@@ -28,7 +29,8 @@ def setup_logger():
     access_handler = RotatingFileHandler(
         'logs/access.log',
         maxBytes=10*1024*1024,
-        backupCount=10
+        backupCount=10,
+        encoding='utf-8'
     )
     access_handler.setFormatter(formatter)
     logging.getLogger('gunicorn.access').addHandler(access_handler)
