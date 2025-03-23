@@ -41,7 +41,7 @@ def sync_files():
             for subdir, files in subdirs.items():
                 for file_url in files:
                     file_name = file_url.split('/')[-1]
-                    save_path = os.path.join('.', main_dir, subdir, file_name)
+                    save_path = os.path.join('.', 'files', main_dir, subdir, file_name)
                     download_file(file_url, save_path)
         
         logger.info("Файлы успешно синхронизированны")
@@ -88,11 +88,11 @@ def serve_file(filepath):
             
         if len(parts) == 2:
             logger.info(f"Открытие каталога {main_dir}/{subdir} для {client_ip}")
-            return send_from_directory(os.path.join('.', main_dir), subdir)
+            return send_from_directory(os.path.join('.', 'files', main_dir), subdir)
         
         file_path = '/'.join(parts[2:])
         logger.info(f"Открытие каталога {file_path} для {client_ip}")
-        return send_from_directory(os.path.join('.', main_dir, subdir), file_path)
+        return send_from_directory(os.path.join('.','files', main_dir, subdir), file_path)
     
     except Exception as e:
         logger.error(f"Ошибка запроса от {client_ip}: {str(e)}")
