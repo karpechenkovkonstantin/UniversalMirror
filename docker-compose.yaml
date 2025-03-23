@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  mirror:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./links.yaml:/app/links.yaml
+      - ./config.ini:/app/config.ini
+      - ./data:/app/data
+      - ./logs:/app/logs
