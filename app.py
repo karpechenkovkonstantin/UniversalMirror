@@ -34,7 +34,7 @@ def sync_files():
     logger.info("Начало синхронизации")
     
     try:
-        with open('links.yaml', 'r') as f:
+        with open('links.yaml', 'r', encoding='utf-8') as f:
             links = yaml.safe_load(f)
             
         for main_dir, subdirs in links.items():
@@ -72,7 +72,7 @@ def serve_file(filepath):
     logger.info(f"{client_ip} запросил: {filepath}")
     
     try:
-        with open('links.yaml', 'r') as f:
+        with open('links.yaml', 'r', encoding='utf-8') as f:
             links = yaml.safe_load(f)
             
         parts = filepath.split('/')
