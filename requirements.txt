@@ -1,0 +1,7 @@
+Flask==2.3.3
+pyyaml==6.0
+requests==2.26.0
+schedule==1.1.0
+croniter==1.0.15
+gunicorn==20.1.0
+python-json-logger==2.0.7
