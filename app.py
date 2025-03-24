@@ -98,15 +98,15 @@ def serve_file(filepath):
         logger.error(f"Ошибка запроса от {client_ip}: {str(e)}")
         abort(403)
 
-if __name__ == '__main__':
-    settings = load_config()
+settings = load_config()
+
+if settings.getboolean('sync_on_startup', False):
+    logger.info("Включена синхронизация при запуске")
+    sync_files()
     
-    if settings.getboolean('sync_on_startup', False):
-        logger.info("Включена синхронизация при запуске")
-        sync_files()
-        
-    if settings.getboolean('enable_scheduled_sync', True):
-        logger.info("Включена синхронизация по графику")
-        schedule_sync()
-        
+if settings.getboolean('enable_scheduled_sync', True):
+    logger.info("Включена синхронизация по графику")
+    schedule_sync()
+
+if __name__ == '__main__':
     app.run(host='0.0.0.0', port=3000)
