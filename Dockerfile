@@ -15,4 +15,4 @@ ENV FLASK_ENV=production
 
 EXPOSE 3000
 
-CMD ["gunicorn", "--bind", "0.0.0.0:3000", "--access-logfile", "-", "--error-logfile", "-", "--log-level", "info", "app:app"]
+CMD ["gunicorn", "--timeout", "60","workers","2","threads","2","--bind", "0.0.0.0:3000", "--access-logfile", "-", "--error-logfile", "-", "--log-level", "info", "app:app"]
